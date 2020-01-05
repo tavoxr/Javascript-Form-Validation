@@ -21,6 +21,41 @@ confirmPassword.addEventListener('focusout',validateConfirmPassword);
 email.addEventListener('focusout',validateEmail);
 
 
+
+
+//handle form
+
+
+form.addEventListener('submit',(event)=>{
+    // Prevent default behaviour
+    event.preventDefault();
+
+    if(validateFirstName() && validateLastName() && 
+       validatePassword()  && validateConfirmPassword() &&
+       validateEmail()
+        ){
+            const name = firstName.value;
+            const container = document.querySelector('div.container');
+            const loader = document.createElement('div');
+            loader.className = 'progress';
+            const loadingBar= document.createElement('div');
+            loadingBar.className= 'indeterminate';
+            loader.appendChild(loadingBar);
+            container.appendChild(loader);
+
+            setTimeout(function(){
+                const loaderDiv= document.querySelector('div.progress');
+                const panel = document.createElement('div');
+                panel.className= 'card-panel green';
+                const text= document.createElement('span');
+                text.appendChild(document.createTextNode(`Sign up successful, welcom to APP ${name}` ));
+                panel.appendChild(text);
+                container.replaceChild(panel, loaderDiv);
+            },1000)
+
+        }
+})
+
 //Validators
 //----------first Name-------------------
 function validateFirstName(){
@@ -82,6 +117,11 @@ function validateConfirmPassword(){
 }
 
 
+function validateEmail(){
+    if(checkIfEmpty(email)) return;
+    if(!containsCharacters(email,5)) return;
+    return true;
+}
 //  Utility functions
 function checkIfEmpty(field){
     if(isEmpty(field.value.trim())){
@@ -168,6 +208,11 @@ function meetLength(field, minLength, maxLength){
                        // At least one uppercase letter, one lowercase letter, one number and one special character (symbol)
                      regEx=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/;
                      return matchWithRegEx(regEx,field, "Must contain at least one uppercase letter, one lowercase letter, one number and one special character");
+
+            case 5:  //Email pattern
+                     regEx= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                     return matchWithRegEx(regEx,field, "Must be a valid email adress");
+
 
             default:
                 return false;
