@@ -13,24 +13,54 @@
     <div class="container">
         <h1>Sign Up</h1>
         <div class="row">
-            <form class="col s6" id="myForm">
-                <div class="input-field col s6">
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="First Name" id="firstName" placeholder="Gustavo"/>
+            <!--form-->
+            <form class="col s6" id="myForm" novalidate>
+              <div class="row">
+                    <div class="input-field col s6">
+                         <label for="firstName">First Name</label>
+                         <input type="text" name="First Name" id="firstName" placeholder="Gustavo"/>
+                         <span   id="mensaje"></span>
+                     </div>
+                    <div class="input-field col s6">
+                         <label for="lastName">Last Name</label>
+                         <input type="text" name="Last Name" id="lastName" placeholder="Herrera"/>
+                         <span class="helper-text"></span>
+                    </div>
+              </div>
+              <div class="row">
+                    <div class="input-field col s6">
+                         <label for="password">Password</label>
+                         <input type="password"  name="Password" id="password"/>
+                         <span class="helper-text"></span>
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password"  name="Confirm Password" id="confirmPassword"/>
+                        <span class="helper-text" ></span>
+                   </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <label for="email">Email</label>
+                    <input type="email" name="Email" id="email"/>
                     <span class="helper-text"></span>
-                </div>
-                <div class="input-field col s6">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="Last Name" id="lastName" placeholder="Herrera"/>
-                    <span class="helper-text"></span>
-                </div>
+                  </div>
+
+              </div>
+              <button type="submit" class="btn waves-effect waves-light" id="btnSubmit">Sign Up</button>
+
             </form>
-            <div class="col s6">
+             <!--end of form-->
+        
+             <!--image-->
+            <div class="col s6">    
                 <img src="https://cdn.pixabay.com/photo/2016/10/06/03/30/man-1718099_960_720.jpg"  />
             </div>
-        </div>
+              <!--end of image-->
+        </div> <!--end of row-->
+    </div> <!--end of container-->
 
-    </div>
+    <script src="index.js" ></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
